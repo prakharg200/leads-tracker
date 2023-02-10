@@ -4,14 +4,20 @@
     </head>
     <body>
         <input type="text" id="input-el">
-        <button id="input-btn">SAVE INPUT</button>
-        <button id="delete-btn">DELETE ALL</button>
-        <button id="tab-btn">SAVE TAB</button>
-        <button id="recover-btn">RECOVER DELETED</button>
+        <div class="first-row">
+            <button id="input-btn">SAVE INPUT</button>
+            <button id="tab-btn">SAVE TAB</button>
+        </div>
+        <div class="second-row">
+            <button id="delete-btn">DELETE ALL</button>
+            <button id="recover-btn">DELETE HISTORY</button>
+        </div>
         <div class="list-container">
             <ul id="ul-el">
+                <li><b>Leads</b></li>
             </ul>
             <ul id="deleted-el">
+                <li><b>History</b></li>
             </ul>
         </div>
         <script src="index.js"></script>

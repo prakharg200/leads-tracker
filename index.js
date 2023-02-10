@@ -13,11 +13,11 @@ if(prevStorage){
     prevStorage.forEach((lead)=>{
         myLeads.push(lead)
     })
-    render(myLeads,ulEl)
+    render(myLeads,ulEl,"Leads")
 }
 
-function render(arr,element) {
-    let listItems = ""
+function render(arr,element,firstElement) {
+    let listItems = `<li><b>${firstElement}</b></li>`
     arr.forEach((item)=>{
         listItems += `
             <li>
@@ -34,14 +34,14 @@ inputBtn.addEventListener("click", function() {
     myLeads.push(inputEl.value)
     localStorage.setItem("leads",JSON.stringify(myLeads))
     inputEl.value = ""
-    render(myLeads,ulEl)
+    render(myLeads,ulEl,"Leads")
 })
 
 deleteBtn.addEventListener("click",function(){
     localStorage.clear()
     localStorage.setItem("deletedLeads",JSON.stringify(myLeads))
     myLeads = []
-    render(myLeads,ulEl)
+    render(myLeads,ulEl,"Leads")
 })
 
 recoverBtn.addEventListener("click",function(){
@@ -51,7 +51,7 @@ recoverBtn.addEventListener("click",function(){
         previousDeletedStorage.forEach((lead)=>{
             deletedLeads.push(lead)
         })
-        render(deletedLeads,dlEl)
+        render(deletedLeads,dlEl,"History")
     }
 })
 
@@ -59,7 +59,7 @@ savetabBtn.addEventListener("click",function(){
     chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
         myLeads.push(tabs[0].url);
         localStorage.setItem("leads",JSON.stringify(myLeads))
-        render(myLeads,ulEl)
+        render(myLeads,ulEl,"Leads")
     });
 })
 
